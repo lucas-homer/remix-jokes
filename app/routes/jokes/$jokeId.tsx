@@ -1,4 +1,4 @@
-import { Joke } from "@prisma/client";
+import type { Joke } from "@prisma/client";
 import { Link, LoaderFunction, useLoaderData } from "remix";
 import { db } from "~/utils/db.server";
 
