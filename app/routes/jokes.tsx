@@ -1,5 +1,6 @@
 import { User } from "@prisma/client";
 import {
+  Form,
   Link,
   LinksFunction,
   LoaderFunction,
@@ -55,11 +56,11 @@ export default function JokesRoute() {
           {data.user ? (
             <div className="user-info">
               <span>{`Hi ${data.user.username}`}</span>
-              <form action="/logout" method="post">
+              <Form action="/logout" method="post">
                 <button type="submit" className="button">
                   Logout
                 </button>
-              </form>
+              </Form>
             </div>
           ) : (
             <Link to="/login">Login</Link>
@@ -74,7 +75,9 @@ export default function JokesRoute() {
             <ul>
               {data.jokeListItems.map(joke => (
                 <li key={joke.id}>
-                  <Link to={joke.id}>{joke.name}</Link>
+                  <Link prefetch="intent" to={joke.id}>
+                    {joke.name}
+                  </Link>
                 </li>
               ))}
             </ul>
